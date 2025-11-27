@@ -4,6 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from '../pages/HomeScreen';
 import DetailsScreen from '../pages/DetailsScreen';
+import Contato from '../pages/Contato';
+import Weather from '../pages/Weather';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +45,24 @@ export default function StackNavigator() {
         component={DetailsScreen}
         options={{
           title: 'Detalhes',
+          headerShown: true, // Mostrar header nas telas internas
+        }}
+      />
+
+      <Stack.Screen
+        name="Contato"
+        component={Contato}
+        options={{
+          title: 'Contato',
+          headerShown: true, // Mostrar header nas telas internas
+        }}
+      />
+
+      <Stack.Screen
+        name="Weather"
+        component={Weather}
+        options={{
+          title: 'Clima',
           headerShown: true, // Mostrar header nas telas internas
         }}
       />
