@@ -24,6 +24,20 @@ export default function HomeScreen({ navigation }) {
         >
           <Text style={styles.buttonText}>Ir para Listagem</Text>
         </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Contato')}
+        >
+          <Text style={styles.buttonText}>Ir para Contato</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Weather')}
+        >
+          <Text style={styles.buttonText}>Ir para Clima</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
