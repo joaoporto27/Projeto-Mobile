@@ -12,6 +12,7 @@ import {
   ScrollView
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import Gradient from '../components/Gradient';
 
 const Contato = () => {
   const [nomeCompleto, setNomeCompleto] = useState('');
@@ -41,6 +42,7 @@ const Contato = () => {
   };
 
   return (
+    <Gradient style={styles.gradient}>
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView 
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -101,15 +103,15 @@ const Contato = () => {
 
             <View style={styles.iconsContainer}>
               <TouchableOpacity style={styles.iconButton}>
-                <Ionicons name="cloud-outline" size={24} color="#666" />
+                <Ionicons name="cloud-outline" size={24} color="#fff" />
               </TouchableOpacity>
               
               <TouchableOpacity style={styles.iconButton}>
-                <Ionicons name="sunny-outline" size={24} color="#666" />
+                <Ionicons name="sunny-outline" size={24} color="#fff" />
               </TouchableOpacity>
               
               <TouchableOpacity style={styles.iconButton}>
-                <Ionicons name="menu-outline" size={24} color="#666" />
+                <Ionicons name="menu-outline" size={24} color="#fff" />
               </TouchableOpacity>
             </View>
 
@@ -117,13 +119,17 @@ const Contato = () => {
         </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
+    </Gradient>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#87CEEB',
+    backgroundColor: 'transparent',
+  },
+  gradient: {
+    flex: 1,
   },
   keyboardView: {
     flex: 1,
@@ -139,12 +145,12 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#666',
+    color: '#FFFFFF',
     textAlign: 'left',
   },
   formContainer: {
     flex: 1,
-    backgroundColor: '#B8B8B8',
+    backgroundColor: 'rgba(255,255,255,0.12)',
     marginHorizontal: 20,
     borderRadius: 15,
     padding: 20,
@@ -156,7 +162,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#FFFFFF',
     marginBottom: 8,
   },
   input: {
