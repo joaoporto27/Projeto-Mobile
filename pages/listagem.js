@@ -27,7 +27,8 @@ export default function Listagem({ navigation }) {
 
     return (
         <View style={styles.container}>
-            <Text>Esta é a tela de Listagem.</Text>
+            <Text style={styles.title}>Tela de Listagem</Text>
+            <Text style={styles.text}>Lista de itens aqui</Text>
             {cities.map((city) => (
                 <CityCard
                     key={city.id}
@@ -53,6 +54,19 @@ export default function Listagem({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: '#f8f9fa',
+        padding: 20,
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 10,
+        color: '#333',
+    },
+    text: {
+        fontSize: 16,
+        color: '#666',
     },
 });

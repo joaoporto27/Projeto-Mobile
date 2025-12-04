@@ -20,7 +20,7 @@ export default function HomeScreen({ navigation }) {
         
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('Listagem')}
+          onPress={() => navigation.getParent().navigate('Listagem')}
         >
           <Text style={styles.buttonText}>Ir para Listagem</Text>
         </TouchableOpacity>
