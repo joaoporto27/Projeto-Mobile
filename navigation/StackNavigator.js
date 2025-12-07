@@ -6,6 +6,7 @@ import HomeScreen from '../pages/HomeScreen';
 import DetailsScreen from '../pages/DetailsScreen';
 import Contato from '../pages/Contato';
 import Weather from '../pages/Weather';
+import WeatherDetails from '../pages/WeatherDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -64,6 +65,15 @@ export default function StackNavigator() {
         options={{
           title: 'Clima',
           headerShown: true, // Mostrar header nas telas internas
+        }}
+      />
+
+      <Stack.Screen
+        name="WeatherDetails"
+        component={WeatherDetails}
+        options={{
+          title: 'Detalhes do Clima',
+          headerShown: true,
         }}
       />
     </Stack.Navigator>

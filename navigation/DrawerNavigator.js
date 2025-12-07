@@ -1,10 +1,46 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
 import StackNavigator from './StackNavigator';
 import Listagem from '../pages/listagem';
+import WeatherDetails from '../pages/WeatherDetails';
 
 const Drawer = createDrawerNavigator();
+const ListagemStack = createNativeStackNavigator();
+
+// Stack Navigator para a tela de Listagem
+function ListagemStackNavigator() {
+  return (
+    <ListagemStack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#007AFF',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}
+    >
+      <ListagemStack.Screen
+        name="ListagemHome"
+        component={Listagem}
+        options={{
+          headerShown: false, // O header será mostrado pelo Drawer
+        }}
+      />
+      <ListagemStack.Screen
+        name="WeatherDetails"
+        component={WeatherDetails}
+        options={{
+          title: 'Detalhes do Clima',
+          headerShown: true,
+        }}
+      />
+    </ListagemStack.Navigator>
+  );
+}
 
 export default function DrawerNavigator() {
   return (
@@ -39,7 +75,7 @@ export default function DrawerNavigator() {
       />
       <Drawer.Screen
         name="Listagem"
-        component={Listagem}
+        component={ListagemStackNavigator}
         options={{
           drawerLabel: 'Listagem',
           drawerIcon: ({ color, size }) => (
