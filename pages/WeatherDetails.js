@@ -130,11 +130,6 @@ export default function WeatherDetails({ route }) {
     return (
         <Gradient style={styles.container}>
             <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-                <View style={styles.header}>
-                    <Text style={styles.cityName}>{weatherData.name}</Text>
-                    <Text style={styles.country}>{weatherData.sys.country}</Text>
-                </View>
-
                 <View style={styles.mainCard}>
                     <Ionicons 
                         name={getWeatherIcon(weatherData.weather[0].main)} 

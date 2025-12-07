@@ -50,9 +50,7 @@ const Contato = () => {
       >
         <ScrollView contentContainerStyle={styles.scrollContainer}>
 
-          <View style={styles.header}>
-            <Text style={styles.headerTitle}>Fale Conosco</Text>
-          </View>
+          {/* Header do navigator já controla o título; manter conteúdo do formulário abaixo */}
 
           <View style={styles.formContainer}>
 

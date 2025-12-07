@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import Gradient from '../components/Gradient';
 
 export default function HomeScreen({ navigation }) {
   return (
-    <View style={styles.container}>
+    <Gradient style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.title}>Bem-vindo ao App!</Text>
         <Text style={styles.subtitle}>
@@ -39,14 +40,13 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.buttonText}>Ir para Clima</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </Gradient>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
   },
 
   content: {
@@ -60,13 +60,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 10,
     textAlign: 'center',
-    color: '#333',
+    color: '#fff',
   },
   subtitle: {
     fontSize: 16,
     marginBottom: 30,
     textAlign: 'center',
-    color: '#666',
+    color: '#e6f0f2',
   },
   button: {
     backgroundColor: '#007AFF',

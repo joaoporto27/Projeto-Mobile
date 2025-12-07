@@ -15,7 +15,7 @@ const Gradient = ({
       locations={locations}
       start={start}
       end={end}
-      style={style}
+      style={[{ flex: 1 }, style]}
     >
       {children}
     </LinearGradient>
