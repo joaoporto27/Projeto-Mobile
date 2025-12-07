@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ActivityIndicator, Alert } from 'react-native';
+import Gradient from '../components/Gradient';
 import CityCard from '../components/CityCard';
 import FloatButton from '../components/FloatButton';
 
@@ -100,11 +101,8 @@ export default function Listagem({ navigation }) {
     }
 
     return (
-        <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.title}>Tela de Listagem</Text>
-                <Text style={styles.subtitle}>Minhas cidades favoritas</Text>
-            </View>
+        <Gradient style={styles.container}>
+            {/* O header do Drawer/Stack já exibe o título; conteúdo da tela continua abaixo */}
             
             <ScrollView 
                 style={styles.scrollView}
@@ -130,31 +128,28 @@ export default function Listagem({ navigation }) {
             </ScrollView>
 
             <FloatButton onPress={handleAddCity} />
-        </View>
+        </Gradient>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f8f9fa',
     },
     header: {
         padding: 20,
         paddingTop: 30,
-        backgroundColor: '#fff',
-        borderBottomWidth: 1,
-        borderBottomColor: '#e0e0e0',
+        backgroundColor: 'transparent',
     },
     title: {
         fontSize: 28,
         fontWeight: 'bold',
         marginBottom: 5,
-        color: '#333',
+        color: '#fff',
     },
     subtitle: {
         fontSize: 16,
-        color: '#666',
+        color: '#e6f0f2',
     },
     scrollView: {
         flex: 1,
@@ -166,18 +161,18 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f8f9fa',
+        backgroundColor: 'transparent',
     },
     loadingText: {
         marginTop: 10,
         fontSize: 16,
-        color: '#666',
+        color: '#fff',
     },
     errorContainer: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f8f9fa',
+        backgroundColor: 'transparent',
         padding: 20,
     },
     errorText: {

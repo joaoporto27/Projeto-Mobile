@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import Gradient from '../components/Gradient';
 
 export default function DetailsScreen({ navigation }) {
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.content}>
+    <Gradient style={styles.container}>
+      <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Informações do Item</Text>
           <Text style={styles.cardText}>Nome: Produto Exemplo</Text>
@@ -22,15 +23,14 @@ export default function DetailsScreen({ navigation }) {
             Ir para Início
           </Text>
         </TouchableOpacity>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </Gradient>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f9fa',
   },
   content: {
     padding: 20,
