@@ -22,7 +22,7 @@ export default function StackNavigator() {
         headerTitleStyle: {
           fontWeight: 'bold',
         },
-        headerShown: false, // Headers controlados individualmente por tela
+        headerShown: false, 
       }}
     >
       <Stack.Screen
@@ -30,7 +30,7 @@ export default function StackNavigator() {
         component={HomeScreen}
         options={({ navigation }) => ({
           title: 'Início',
-          headerShown: true,
+          headerShown: false,
           headerLeft: () => (
             <TouchableOpacity
               onPress={() => navigation.getParent('drawer').openDrawer()}
@@ -46,7 +46,7 @@ export default function StackNavigator() {
         component={DetailsScreen}
         options={{
           title: 'Detalhes',
-          headerShown: true, // Mostrar header nas telas internas
+          headerShown: true, 
         }}
       />
 
@@ -55,7 +55,7 @@ export default function StackNavigator() {
         component={Contato}
         options={{
           title: 'Contato',
-          headerShown: true, // Mostrar header nas telas internas
+          headerShown: true, 
         }}
       />
 
@@ -64,7 +64,7 @@ export default function StackNavigator() {
         component={Weather}
         options={{
           title: 'Clima',
-          headerShown: true, // Mostrar header nas telas internas
+          headerShown: true, 
         }}
       />
 
