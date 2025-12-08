@@ -5,11 +5,11 @@ import { Ionicons } from '@expo/vector-icons';
 import StackNavigator from './StackNavigator';
 import Listagem from '../pages/listagem';
 import WeatherDetails from '../pages/WeatherDetails';
+import Contato from '../pages/Contato';
 
 const Drawer = createDrawerNavigator();
 const ListagemStack = createNativeStackNavigator();
 
-// Stack Navigator para a tela de Listagem
 function ListagemStackNavigator() {
   return (
     <ListagemStack.Navigator
@@ -27,7 +27,7 @@ function ListagemStackNavigator() {
         name="ListagemHome"
         component={Listagem}
         options={{
-          headerShown: false, // O header será mostrado pelo Drawer
+          headerShown: false, 
         }}
       />
       <ListagemStack.Screen
@@ -70,7 +70,7 @@ export default function DrawerNavigator() {
           drawerIcon: ({ color, size }) => (
             <Ionicons name="home" size={size} color={color} />
           ),
-          headerShown: false, // Esconder header do drawer para usar o do stack
+          headerShown: false,
         }}
       />
       <Drawer.Screen
@@ -82,6 +82,17 @@ export default function DrawerNavigator() {
             <Ionicons name="list" size={size} color={color} />
           ),
           headerTitle: 'Listagem',
+        }}
+      />
+      <Drawer.Screen
+        name="Contato"
+        component={Contato}
+        options={{
+          drawerLabel: 'Contato',
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="chatbox" size={size} color={color} />
+          ),
+          headerTitle: 'Contato',
         }}
       />
     </Drawer.Navigator>
