@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ActivityIndicator, Alert } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import Gradient from '../components/Gradient';
 import CityCard from '../components/CityCard';
 import FloatButton from '../components/FloatButton';
@@ -80,6 +81,10 @@ export default function Listagem({ navigation }) {
         );
     };
 
+    const openMenu = () => {
+        navigation.getParent()?.openDrawer?.();
+    };
+
     if (loading) {
         return (
             <View style={styles.loadingContainer}>
@@ -101,8 +106,22 @@ export default function Listagem({ navigation }) {
     }
 
     return (
-        <Gradient style={styles.container}>
-            {/* O header do Drawer/Stack já exibe o título; conteúdo da tela continua abaixo */}
+        <Gradient 
+            style={styles.container}
+            colors={['#d6f1ff', '#bce6ff', '#8fd3ff']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 1 }}
+        >
+            <View style={styles.header}>
+                <View style={styles.headerLeft}>
+                    <Text style={styles.title}>Listagem</Text>
+                </View>
+                <View style={styles.headerActions}>
+                    <TouchableOpacity style={styles.iconButton} onPress={openMenu}>
+                        <Ionicons name="menu" size={28} color="#007AFF" />
+                    </TouchableOpacity>
+                </View>
+            </View>
             
             <ScrollView 
                 style={styles.scrollView}
@@ -137,19 +156,34 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     header: {
-        padding: 20,
-        paddingTop: 30,
-        backgroundColor: 'transparent',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 24,
+        paddingTop: 48,
+        paddingBottom: 12,
+    },
+    headerLeft: {
+        flexDirection: 'row',
+        alignItems: 'center',
     },
     title: {
         fontSize: 28,
         fontWeight: 'bold',
-        marginBottom: 5,
-        color: '#fff',
+        color: '#1c3d5a',
     },
-    subtitle: {
-        fontSize: 16,
-        color: '#e6f0f2',
+    headerActions: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    iconButton: {
+        marginLeft: 12,
+        width: 36,
+        height: 36,
+        borderRadius: 10,
+        backgroundColor: '#f0f7ff',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     scrollView: {
         flex: 1,
@@ -166,7 +200,7 @@ const styles = StyleSheet.create({
     loadingText: {
         marginTop: 10,
         fontSize: 16,
-        color: '#fff',
+        color: '#1c3d5a',
     },
     errorContainer: {
         flex: 1,

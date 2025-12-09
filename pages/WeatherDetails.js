@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ActivityIndicator, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator, ScrollView, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Gradient from '../components/Gradient';
 
 const API_KEY = '55a27d3f47e50f329fc31a3de843fbae';
 
-export default function WeatherDetails({ route }) {
+export default function WeatherDetails({ route, navigation }) {
     const { cityId, cityName } = route.params;
     const [weatherData, setWeatherData] = useState(null);
     const [forecastData, setForecastData] = useState(null);
@@ -47,6 +47,10 @@ export default function WeatherDetails({ route }) {
             setError(err.message);
             setLoading(false);
         }
+    };
+
+    const goBack = () => {
+        navigation.goBack();
     };
 
     // Processar dados de previsão por hora (próximas 24h)
@@ -108,8 +112,13 @@ export default function WeatherDetails({ route }) {
 
     if (loading) {
         return (
-            <Gradient style={styles.centerContainer}>
-                <ActivityIndicator size="large" color="#FFFFFF" />
+            <Gradient 
+                style={styles.centerContainer}
+                colors={['#d6f1ff', '#bce6ff', '#8fd3ff']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+            >
+                <ActivityIndicator size="large" color="#1c3d5a" />
                 <Text style={styles.loadingText}>Carregando dados do clima...</Text>
             </Gradient>
         );
@@ -117,8 +126,13 @@ export default function WeatherDetails({ route }) {
 
     if (error) {
         return (
-            <Gradient style={styles.centerContainer}>
-                <Ionicons name="cloud-offline" size={64} color="#FFFFFF" />
+            <Gradient 
+                style={styles.centerContainer}
+                colors={['#d6f1ff', '#bce6ff', '#8fd3ff']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+            >
+                <Ionicons name="cloud-offline" size={64} color="#1c3d5a" />
                 <Text style={styles.errorText}>{error}</Text>
             </Gradient>
         );
@@ -128,7 +142,21 @@ export default function WeatherDetails({ route }) {
     const weeklyForecast = getWeeklyForecast();
 
     return (
-        <Gradient style={styles.container}>
+        <Gradient 
+            style={styles.container}
+            colors={['#d6f1ff', '#bce6ff', '#8fd3ff']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 1 }}
+        >
+            <View style={styles.header}>
+                <View style={styles.headerLeft}>
+                    <TouchableOpacity style={styles.backButton} onPress={goBack}>
+                        <Ionicons name="arrow-back" size={24} color="#007AFF" />
+                    </TouchableOpacity>
+                    <Text style={styles.headerTitle}>{cityName}</Text>
+                </View>
+            </View>
+            
             <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
                 <View style={styles.mainCard}>
                     <Ionicons 
@@ -275,6 +303,31 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: 24,
+        paddingTop: 48,
+        paddingBottom: 12,
+    },
+    headerLeft: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    backButton: {
+        width: 36,
+        height: 36,
+        borderRadius: 10,
+        backgroundColor: '#f0f7ff',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 12,
+    },
+    headerTitle: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#1c3d5a',
+    },
     scrollView: {
         flex: 1,
     },
@@ -286,13 +339,13 @@ const styles = StyleSheet.create({
     loadingText: {
         marginTop: 15,
         fontSize: 16,
-        color: '#FFFFFF',
+        color: '#1c3d5a',
         fontWeight: '500',
     },
     errorText: {
         marginTop: 15,
         fontSize: 16,
-        color: '#FFFFFF',
+        color: '#1c3d5a',
         textAlign: 'center',
         paddingHorizontal: 20,
         fontWeight: '500',

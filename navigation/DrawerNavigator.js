@@ -34,8 +34,7 @@ function ListagemStackNavigator() {
         name="WeatherDetails"
         component={WeatherDetails}
         options={{
-          title: 'Detalhes do Clima',
-          headerShown: true,
+          headerShown: false,
         }}
       />
     </ListagemStack.Navigator>
@@ -81,7 +80,7 @@ export default function DrawerNavigator() {
           drawerIcon: ({ color, size }) => (
             <Ionicons name="list" size={size} color={color} />
           ),
-          headerTitle: 'Listagem',
+          headerShown: false,
         }}
       />
       <Drawer.Screen
@@ -92,7 +91,7 @@ export default function DrawerNavigator() {
           drawerIcon: ({ color, size }) => (
             <Ionicons name="chatbox" size={size} color={color} />
           ),
-          headerTitle: 'Contato',
+          headerShown: false,
         }}
       />
     </Drawer.Navigator>
