@@ -72,8 +72,7 @@ export default function StackNavigator() {
         name="WeatherDetails"
         component={WeatherDetails}
         options={{
-          title: 'Detalhes do Clima',
-          headerShown: true,
+          headerShown: false,
         }}
       />
     </Stack.Navigator>

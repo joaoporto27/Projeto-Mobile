@@ -14,7 +14,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import Gradient from '../components/Gradient';
 
-const Contato = () => {
+const Contato = ({ navigation }) => {
   const [nomeCompleto, setNomeCompleto] = useState('');
   const [email, setEmail] = useState('');
   const [mensagem, setMensagem] = useState('');
@@ -41,17 +41,47 @@ const Contato = () => {
     );
   };
 
+  const openMenu = () => {
+    console.log('Tentando abrir drawer...');
+    try {
+      navigation.openDrawer();
+      console.log('Drawer aberto com sucesso');
+    } catch (error) {
+      console.error('Erro ao abrir drawer:', error);
+    }
+  };
+
   return (
-    <Gradient style={styles.gradient}>
+    <Gradient 
+      style={styles.gradient}
+      colors={['#d6f1ff', '#bce6ff', '#8fd3ff']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 0, y: 1 }}
+    >
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView 
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.keyboardView}
       >
+        <View style={styles.header}>
+          <View style={styles.headerLeft}>
+            <Text style={styles.headerTitle}>Contato</Text>
+          </View>
+          <View style={styles.headerActions}>
+            <TouchableOpacity 
+              style={styles.iconButtonHeader} 
+              onPress={() => {
+                console.log('Botão pressionado');
+                openMenu();
+              }}
+              activeOpacity={0.7}
+            >
+              <Ionicons name="menu" size={28} color="#007AFF" />
+            </TouchableOpacity>
+          </View>
+        </View>
+
         <ScrollView contentContainerStyle={styles.scrollContainer}>
-
-          {/* Header do navigator já controla o título; manter conteúdo do formulário abaixo */}
-
           <View style={styles.formContainer}>
 
             <View style={styles.inputGroup}>
@@ -136,15 +166,34 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   header: {
-    paddingTop: 20,
-    paddingBottom: 30,
-    paddingHorizontal: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 24,
+    paddingTop: 48,
+    paddingBottom: 12,
+  },
+  headerLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   headerTitle: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
-    color: '#FFFFFF',
-    textAlign: 'left',
+    color: '#1c3d5a',
+  },
+  headerActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  iconButtonHeader: {
+    marginLeft: 12,
+    width: 36,
+    height: 36,
+    borderRadius: 10,
+    backgroundColor: '#f0f7ff',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   formContainer: {
     flex: 1,
