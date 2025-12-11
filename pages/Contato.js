@@ -164,6 +164,8 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   header: {
     flexDirection: 'row',
@@ -196,9 +198,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   formContainer: {
-    flex: 1,
     backgroundColor: 'rgba(255,255,255,0.12)',
-    marginHorizontal: 20,
+    width: '92%',
+    maxWidth: 640,
     borderRadius: 15,
     padding: 20,
     marginBottom: 20,

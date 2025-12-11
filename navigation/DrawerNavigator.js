@@ -73,10 +73,10 @@ export default function DrawerNavigator() {
         }}
       />
       <Drawer.Screen
-        name="Listagem"
+        name="Favoritos"
         component={ListagemStackNavigator}
         options={{
-          drawerLabel: 'Listagem',
+          drawerLabel: 'Favoritos',
           drawerIcon: ({ color, size }) => (
             <Ionicons name="list" size={size} color={color} />
           ),

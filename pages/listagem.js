@@ -114,7 +114,7 @@ export default function Listagem({ navigation }) {
         >
             <View style={styles.header}>
                 <View style={styles.headerLeft}>
-                    <Text style={styles.title}>Listagem</Text>
+                    <Text style={styles.title}>Favoritos</Text>
                 </View>
                 <View style={styles.headerActions}>
                     <TouchableOpacity style={styles.iconButton} onPress={openMenu}>
@@ -146,7 +146,6 @@ export default function Listagem({ navigation }) {
                 ))}
             </ScrollView>
 
-            <FloatButton onPress={handleAddCity} />
         </Gradient>
     );
 }
